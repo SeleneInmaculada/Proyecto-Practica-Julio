@@ -25,6 +25,7 @@ if(repetirPassword != datos.password){
     },
     body: JSON.stringify(datos)
   });
-
+    alert("Has conseguido registrarte sin joder el codigo ni erorres 500. Bravisimo");
+    window.location.href= 'login.html';
 }
 
