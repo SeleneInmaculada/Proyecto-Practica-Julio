@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class UsuarioController implements UsuarioDao {
+public class UsuarioController {
 
     @Autowired
     private UsuarioDao usuarioDao;
@@ -46,11 +46,6 @@ public class UsuarioController implements UsuarioDao {
     @RequestMapping(value="api/usuarios/{id}", method = RequestMethod.DELETE)
     public void eliminar(@PathVariable Long id) {
         usuarioDao.eliminar(id);
-    }
-
-    @Override
-    public void registrar(Usuario usuario) {
-
     }
 
 
