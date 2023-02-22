@@ -2,6 +2,7 @@ package com.s2daw.demo.controllers;
 
 import com.s2daw.demo.dao.UsuarioDao;
 import com.s2daw.demo.models.Usuario;
+import com.s2daw.demo.utils.JWTUtil;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class UsuarioController {
     @Autowired
     private UsuarioDao usuarioDao;
 
+    @Autowired
+    private JWTUtil jwtUtil;
+
     @RequestMapping(value="api/usuarios/{id}", method = RequestMethod.GET)
     public Usuario getUsuario(@PathVariable Long id){
         Usuario usuario = new Usuario();
@@ -27,9 +31,9 @@ public class UsuarioController {
         return usuario;
     }
 
-    @RequestMapping(value="api/usuarios", method = RequestMethod.GET)
+    @RequestMapping(value="api/usuarios",method= RequestMethod.GET)
     public List<Usuario> getUsuarios(){
-    return usuarioDao.getUsuarios();
+        return usuarioDao.getUsuarios();
     }
     @RequestMapping(value="api/usuarios", method = RequestMethod.POST)
     public void registrarUsuario(@RequestBody Usuario usuario){
