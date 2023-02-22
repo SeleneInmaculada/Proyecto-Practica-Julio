@@ -30,9 +30,12 @@ public class UsuarioController {
         usuario.setTelefono("666666666");
         return usuario;
     }
-
-    @RequestMapping(value="api/usuarios",method= RequestMethod.GET)
-    public List<Usuario> getUsuarios(){
+    @RequestMapping(value="api/usuarios")
+    public List<Usuario> getUsuarios(@RequestHeader(value = "Authorization") String token){
+        String usuarioID = jwtUtil.getKey(token);
+        if(usuarioID==null){
+            return new ArrayList<>();
+        }
         return usuarioDao.getUsuarios();
     }
     @RequestMapping(value="api/usuarios", method = RequestMethod.POST)
