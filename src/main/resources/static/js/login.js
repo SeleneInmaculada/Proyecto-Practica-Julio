@@ -1,6 +1,6 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
-  // lo dejo vacío
+  
 });
 
 async function iniciarSesion(){
@@ -16,7 +16,7 @@ async function iniciarSesion(){
       },
       body: JSON.stringify(datos)
     });
-  // No me gusta que devuelva String , cambio a JSON
+  
   const respuesta = await request.text();
   if (respuesta == 'OK') {
   window.location.href='usuarios.html';
